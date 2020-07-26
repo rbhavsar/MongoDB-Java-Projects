@@ -131,6 +131,22 @@ db.restaurants.find(
 );
 ```
 
+**NOT IN Operator**
+```
+db.restaurants.find(
+{
+    "borough" :
+    {
+        $nin :
+        [
+            "Staten Island","Queens","Bronx","Brooklyn"
+        ]
+     }
+}
+);
+```
+
+
 **Update document**
 ```
 db.restaurants.update(
@@ -162,5 +178,21 @@ db.restaurants.find({name:/ah/}); // like '%ah%'
 db.users.find({name: /^pa/}) //like 'pa%' 
 db.users.find({name: /ro$/}) //like '%ro'
 ```
+
+**restaurants which belong to the borough Bronx and prepared either American or Chinese dish**
+
+```
+db.restaurants.find(
+{ 
+"borough": "Bronx" , 
+$or : 
+[
+    { "cuisine" : "American " },
+    { "cuisine" : "Chinese" }
+] 
+} 
+);
+```
+
 
 
