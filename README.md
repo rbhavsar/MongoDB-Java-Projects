@@ -96,4 +96,66 @@ db.restaurants.find(
 
 ```
 
+**restaurants that achieved a score is more than 80 but less than 100**
+
+```
+db.restaurants.find(
+{
+    grades : 
+    { 
+        $elemMatch:
+        {
+            "score":
+            {
+                $gt : 80 , $lt :100
+            }
+        }
+    }
+});
+```
+
+**IN Operator***
+```
+{ field: { $in: [<value1>, <value2>, ... <valueN> ] } }
+
+db.restaurants.find(
+{
+    "borough":
+    {
+        $in:
+        [
+            "Bronx","Staten Island"
+        ]
+    }
+}
+);
+```
+
+**Update document**
+```
+db.restaurants.update(
+{
+    "name" : 
+        {
+            $in:
+            [
+                "Wendy'S","Riviera Caterer"
+            ]
+        }
+},
+{
+    $set:
+    {
+        "cuisine":"indian",
+        "borough":"ahmedabad"
+    }
+},
+{
+    multi:true
+}
+);
+```
+
+
+
 
