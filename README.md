@@ -156,6 +156,11 @@ db.restaurants.update(
 );
 ```
 
-
+**LIKE Operator**
+```
+db.restaurants.find({name:/ah/}); // like '%ah%'
+db.users.find({name: /^pa/}) //like 'pa%' 
+db.users.find({name: /ro$/}) //like '%ro'
+```
 
 
